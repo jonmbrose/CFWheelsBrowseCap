@@ -1,0 +1,7 @@
+ACKNOWLEDGEMENT
+================
+Browse Capabilities Project
+http://browscap.org/
+
+CFC was modified from
+https://github.com/henrylearn2rock/BrowscapCFC/blob/master/Browscap.cfc
