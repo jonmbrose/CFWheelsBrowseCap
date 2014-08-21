@@ -10,7 +10,15 @@
 
 	<cffunction name="$initBrowseCap" mixin="controller" hint="Initializes application variables used to generate browser capabilities.">
 		<cfscript>
-			$setBrowserCaps( $iniToStruct( expandPath( "#application.wheels.pluginPath#/browsecap/assets/browscap.ini" ) ) );
+			var loc = {};
+
+			if ( StructKeyExists(application, "$wheels") ) {
+				loc.wheels = application.$wheels;
+			} else {
+				loc.wheels = application.wheels;
+			}
+			
+			$setBrowserCaps( $iniToStruct( expandPath( "#loc.wheels.pluginPath#/browsecap/assets/browscap.ini" ) ) );
 			$setBrowserCapsCount( structCount( $getBrowserCaps() ) );
 			$setAgentStringPatterns( $sortArrayByLen( structKeyArray( $getBrowserCaps() ), "desc" ) );
 			$setAgentRegexs( $convertPatternToRegex( $getAgentStringPatterns() ) );
